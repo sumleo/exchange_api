@@ -14,9 +14,11 @@ router.get('/api',function (req,res,next) {
         timeout: 100000,
         gzip: true
     }).then(data => {
-        console.log(data)
+        console.log(data);
+        res.send(data);
     }).catch(ex => {
         resolve(null);
+        res.send({});
     });
 });
 

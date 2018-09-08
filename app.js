@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var cors=require('express-cors');
 var app = express();
 
 // view engine setup
@@ -18,7 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cors({
+    allowedOrigins: [
+        '18.191.191.239:3000', '18.191.191.239:8000','18.191.191.239','localhost','localhost:8000','localhost:3000'
+    ]
+}));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
